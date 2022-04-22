@@ -30,17 +30,17 @@ spec:
         # - name: PORT
         #   value: "5050"
         - name: PRODUCT_CATALOG_SERVICE_ADDR
-          value: "128.105.146.6:31883"
+          value: "INGRESS_IP:INGRESS_PORT"
         - name: SHIPPING_SERVICE_ADDR
-          value: "128.105.146.6:31883"
+          value: "INGRESS_IP:INGRESS_PORT"
         - name: PAYMENT_SERVICE_ADDR
-          value: "128.105.146.6:31883"
+          value: "INGRESS_IP:INGRESS_PORT"
         - name: EMAIL_SERVICE_ADDR
-          value: "128.105.146.6:31883"
+          value: "INGRESS_IP:INGRESS_PORT"
         - name: CURRENCY_SERVICE_ADDR
-          value: "128.105.146.6:31883"
+          value: "INGRESS_IP:INGRESS_PORT"
         - name: CART_SERVICE_ADDR
-          value: "128.105.146.6:31883"
+          value: "INGRESS_IP:INGRESS_PORT"
         - name: PRODUCT_CATALOG_SERVICE_URL
           value: "kn-productcatalogservice.default.example.com"
         - name: SHIPPING_SERVICE_URL

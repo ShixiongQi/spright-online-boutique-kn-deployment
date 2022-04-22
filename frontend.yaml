@@ -39,19 +39,19 @@ spec:
         # - name: PORT
         #   value: "8080"
         - name: PRODUCT_CATALOG_SERVICE_ADDR
-          value: "128.105.146.6:31883"
+          value: "INGRESS_IP:INGRESS_PORT"
         - name: CURRENCY_SERVICE_ADDR
-          value: "128.105.146.6:31883"
+          value: "INGRESS_IP:INGRESS_PORT"
         - name: CART_SERVICE_ADDR
-          value: "128.105.146.6:31883"
+          value: "INGRESS_IP:INGRESS_PORT"
         - name: RECOMMENDATION_SERVICE_ADDR
-          value: "128.105.146.6:31883"
+          value: "INGRESS_IP:INGRESS_PORT"
         - name: SHIPPING_SERVICE_ADDR
-          value: "128.105.146.6:31883"
+          value: "INGRESS_IP:INGRESS_PORT"
         - name: CHECKOUT_SERVICE_ADDR
-          value: "128.105.146.6:31883"
+          value: "INGRESS_IP:INGRESS_PORT"
         - name: AD_SERVICE_ADDR
-          value: "128.105.146.6:31883"
+          value: "INGRESS_IP:INGRESS_PORT"
         - name: PRODUCT_CATALOG_SERVICE_URL
           value: "kn-productcatalogservice.default.example.com"
         - name: CURRENCY_SERVICE_URL
