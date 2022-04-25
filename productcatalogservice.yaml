@@ -16,7 +16,7 @@ spec:
       # containerConcurrency: 4
       containers:
       - image: shixiongqi/kn-productcatalogservice:v1.0.0
-        name: server
+        name: kn-productcatalogservice
         ports:
         - name: h2c
           containerPort: 3550

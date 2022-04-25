@@ -16,7 +16,7 @@ spec:
       # containerConcurrency: 4
       containers:
       - image: shixiongqi/kn-paymentservice:v1.0.0
-        name: server
+        name: kn-paymentservice
         ports:
         - name: h2c
           containerPort: 50051

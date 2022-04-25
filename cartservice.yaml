@@ -16,7 +16,7 @@ spec:
       # containerConcurrency: 4
       containers:
       - image: shixiongqi/kn-cartservice:v1.0.0
-        name: server
+        name: kn-cartservice
         ports:
         - name: h2c
           containerPort: 7070
