@@ -18,6 +18,6 @@ ingressIP = subprocess.check_output("kubectl get po -l istio=ingressgateway -n i
 ingressPort = subprocess.check_output("kubectl -n istio-system get service istio-ingressgateway -o jsonpath='{.spec.ports[?(@.name==\"http2\")].nodePort}'", shell=True).decode('UTF-8')
 ingress = ingressIP + ':' + ingressPort
 
-replaceServiceAddr('../knative/frontend.yaml', ingress)
-replaceServiceAddr('../knative/checkoutservice.yaml', ingress)
-replaceServiceAddr('../knative/recommendationservice.yaml', ingress)
+replaceServiceAddr('./knative/frontend.yaml', ingress)
+replaceServiceAddr('./knative/checkoutservice.yaml', ingress)
+replaceServiceAddr('./knative/recommendationservice.yaml', ingress)
