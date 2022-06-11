@@ -10,16 +10,7 @@ git clone https://github.com/ShixiongQi/spright-online-boutique-kn-deployment.gi
 cd spright-online-boutique-kn-deployment
 python3 hack/setup.py
 
-kubectl apply -f adservice.yaml
-kubectl apply -f cartservice.yaml
-kubectl apply -f currencyservice.yaml
-kubectl apply -f emailservice.yaml
-kubectl apply -f checkoutservice.yaml
-kubectl apply -f frontend.yaml
-kubectl apply -f paymentservice.yaml
-kubectl apply -f productcatalogservice.yaml
-kubectl apply -f recommendationservice.yaml
-kubectl apply -f shippingservice.yaml
+kubectl apply -f knative/
 ```
 
 3. Load testing (with Locust)
