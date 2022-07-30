@@ -29,7 +29,7 @@ pip3 install -r requirements.txt
 pip3 install locust
 
 # Edit .bashrc and export the path to locust
-export PATH="$HOME/.local/bin:$PATH"
+echo export PATH="$HOME/.local/bin:$PATH" >> ~/.bashrc
 source ~/.bashrc
 
 # Use locust to generate traffic
