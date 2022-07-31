@@ -10,8 +10,10 @@ spec:
   template:
     metadata:
       annotations:
+        autoscaling.knative.dev/metric: rps
         autoscaling.knative.dev/minScale: "1"
         autoscaling.knative.dev/maxScale: "1"
+        autoscaling.knative.dev/target: "20"
     spec:
       containerConcurrency: 32
       containers:
@@ -27,8 +29,6 @@ spec:
           exec:
             command: ["/bin/grpc_health_probe", "-addr=:5050"]
         env:
-        # - name: PORT
-        #   value: "5050"
         - name: PRODUCT_CATALOG_SERVICE_ADDR
           value: "INGRESS_IP:INGRESS_PORT"
         - name: SHIPPING_SERVICE_ADDR

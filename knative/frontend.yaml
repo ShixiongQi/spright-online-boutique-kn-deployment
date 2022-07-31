@@ -10,8 +10,10 @@ spec:
   template:
     metadata:
       annotations:
+        autoscaling.knative.dev/metric: rps
         autoscaling.knative.dev/minScale: "1"
         autoscaling.knative.dev/maxScale: "1"
+        autoscaling.knative.dev/target: "20"
     spec:
       containerConcurrency: 32
       containers:
@@ -36,8 +38,6 @@ spec:
         #     - name: "Cookie"
         #       value: "shop_session-id=x-liveness-probe"
         env:
-        # - name: PORT
-        #   value: "8080"
         - name: PRODUCT_CATALOG_SERVICE_ADDR
           value: "INGRESS_IP:INGRESS_PORT"
         - name: CURRENCY_SERVICE_ADDR
