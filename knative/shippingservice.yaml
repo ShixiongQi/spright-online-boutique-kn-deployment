@@ -10,8 +10,10 @@ spec:
   template:
     metadata:
       annotations:
+        autoscaling.knative.dev/metric: rps
         autoscaling.knative.dev/minScale: "1"
         autoscaling.knative.dev/maxScale: "1"
+        autoscaling.knative.dev/target: "20"
     spec:
       containerConcurrency: 32
       containers:
@@ -21,8 +23,6 @@ spec:
         - name: h2c
           containerPort: 50051
         env:
-        # - name: PORT
-        #   value: "50051"
         - name: DISABLE_STATS
           value: "1"
         - name: DISABLE_TRACING
