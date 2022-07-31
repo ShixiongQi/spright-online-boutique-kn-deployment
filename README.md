@@ -13,7 +13,7 @@ python3 hack/setup.py
 kubectl apply -f knative/
 ```
 
-3. Load testing (with Locust)
+3. Install Locust load generator
 ```
 # Install pip3
 sudo apt update && sudo apt install -y python3-pip
@@ -48,3 +48,27 @@ Notes:
 3. Modify the Ingress IP and Port before applying
 
 4. Check the correctness of the ksvc name
+
+--
+## Configuration of scaling policies
+```yaml
+    metadata:
+      annotations:
+        autoscaling.knative.dev/metric: rps
+        autoscaling.knative.dev/minScale: "1"
+        autoscaling.knative.dev/maxScale: "1"
+        autoscaling.knative.dev/target: "20"
+    spec:
+```
+1. The metric configuration defines which metric type is watched by the Autoscaler.
+- **Annotation key**: autoscaling.knative.dev/metric
+- **Possible values**: "concurrency" or "rps", depending on your Autoscaler type.
+- **Default**: "concurrency"
+
+2. A **target** provide the Autoscaler with a value that it tries to maintain for the configured metric for a function.
+
+- **Annotation key**: autoscaling.knative.dev/target
+- **Possible values**: An integer (metric agnostic).
+
+Reference: https://knative.dev/docs/serving/autoscaling/
+
