@@ -2,7 +2,7 @@
 
 Steps:
 
-1. Install Knative on Cloudlab
+1. Install Knative on Cloudlab (or anywhere based on your preference)
 
 2. Download this repo and follow the steps below to deploy online boutique
 ```
@@ -49,7 +49,29 @@ Notes:
 
 4. Check the correctness of the ksvc name
 
---
+---
+## How to use Locust Load Generator
+1. Basic usage (make sure you have the Locust script `locustfile.py` ready)
+```bash
+# move to the directory that has the Locust script
+locust -u 1000 -r 100 -t 2m --headless -H http://$ingressHost:$ingressPort
+```
+- **-u**: Peak number of concurrent Locust users. Primarily used together with `--headless` or `--autostart`. Can be changed during a test by keyboard inputs w, W (spawn 1, 10 users) and s, S (stop 1, 10 users)
+- **-r**:  Spawn rate. Rate to spawn users at (users per second). Primarily used together with `--headless` or `--autostart`.
+- **-t**: Stop after the specified amount of time, e.g. (300s, 20m, 3h, 1h30m, etc.). Only used together with `--headless` or `--autostart`. Defaults to run forever.
+
+2. Advanced usage (Distributed load generation).
+
+A single process running Locust can simulate a throughput up to 600 ~ 900 RPS (depending on CPU's performance). But if your test plan is complex or you want to run even more load, you’ll need to scale out to multiple processes, maybe even multiple machines. To do this, you start one instance of Locust in master mode using the `--master` flag and multiple worker instances using the `--worker` flag. If the workers are not on the same machine as the master you use `--master-host` to point them to the IP/hostname of the machine running the master. The master instance runs Locust’s web interface, and tells the workers when to spawn/stop Users. The workers run your Users and send back statistics to the master. The master instance doesn’t run any Users itself. **Both the master and worker machines must have a copy of the locustfile when running Locust distributed.**
+
+I prepared several scripts to automate the distributed load generation. To start a distributed load generation, run the following command. This will create 16 Locust worker processes and can generate a throughput up to 25000 RPS.
+```
+./run_load_generators.sh kn $ingressHost $ingressPort
+```
+
+Reference: https://docs.locust.io/en/stable/running-distributed.html
+
+---
 ## Configuration of scaling policies
 ```yaml
     metadata:
